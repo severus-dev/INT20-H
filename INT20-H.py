@@ -63,7 +63,7 @@ def unique():
 df = pd.read_csv('data.csv')
 
 # Adding a label column indicating whether the account is cancelled or not
-df['Subscription Premium Cancel'] = df.apply(lambda row: 1 if row['Subscription Premium Cancel'] == 'Account Cancel' else 0, axis=1)
+df['cancelled'] = df.apply(lambda row: 1 if row['cancelled'] == 'cancelled' else 0, axis=1)
 df['event_created_date'] = pd.to_datetime(df['event_created_date'])
 df['month'] = df['event_created_date'].dt.month
 
@@ -140,3 +140,17 @@ print(aggregated_data)
 ###
 
 aggregated_data = df.groupby(['event_name'])['cancelled'].sum().reset_index()
+
+print("the set having these arguments has the highest correlation")
+print("State:")
+print("TX")
+print("FL")
+print("event name:")
+print("Subscription Premium Cancel")
+print("Sign Up Error")
+print("Transaction Refund")
+print("Add Payment Failed")
+print("Account Setup Skip")
+print("event_platform:")
+print("devise_manufacture:")
+print("Time and model have an average correlation")
